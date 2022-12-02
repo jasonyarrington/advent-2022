@@ -99,7 +99,7 @@ scoreRoundVersion2 = (round) => {
 
     // add outcome
     score += scoreKey[myPlay.outcome]
-    
+
     return score
 }
 
@@ -123,14 +123,7 @@ exports.run = (filename, scoreRound) => {
 
     })
 
-    console.log(score)
-
     return {
         score: score
     }
 }
-
-// exports = {
-//     run: run,
-//     scoreRound: scoreRound
-// }
