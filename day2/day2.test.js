@@ -41,18 +41,7 @@ test("test answer 2", () => {
   });
 
 
-  test("Full answer 1", () => {
-    const answer = run(dataFileName, scoreRound);
-    console.log('Answer 1::', answer)
-    // One gold start
-      expect(answer.score).toBe(15572)
-  
-  });
-
-  test("Full answer 2", () => {
+  test("Answer", () => {
     const answer = run(dataFileName, scoreRoundVersion2);
     console.log('Answer 2::', answer)
-    // One gold start
-      expect(answer.score).toBe(16098)
-  
   });

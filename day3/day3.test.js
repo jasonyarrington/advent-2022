@@ -25,24 +25,6 @@ test('scoreElement', () => {
     expect(scoreElement(false)).toBe(0)
 })
 
-// test('Test 1', () => {
-//     const answer = run(testFileName)
-//     expect (answer.prioritySum).toBe(157)
-// })
-
-test('Answers', () => {
-    const answer = run(testFileName)
-    expect (answer.prioritySum).toBe(157)
-    expect (answer.badgeSum).toBe(70)
-
-    const answerData = run(dataFileName)
-
-    console.info('Answer: ', answerData)
-    expect (answerData.prioritySum).toBe(7875)
-    expect (answerData.badgeSum).toBe(2479)
-
-
-})
 
 const group1 = 
 `vJrwpWtwJgWrhcsFMMfFFhFp
@@ -63,13 +45,14 @@ test('findBadge', () => {
 
 })
 
+test('Answers', () => {
+    const answer = run(testFileName)
+    expect (answer.prioritySum).toBe(157)
+    expect (answer.badgeSum).toBe(70)
 
-test('Answer test 2', () => {
+    const answerData = run(dataFileName)
 
-    // const answer = run(testFileName)
-    // expect (answer.hello).toBe("Hello world")
-
-    // const answerData = run(dataFileName)
-    // expect (answerData.hello).toBe("Hello world")
+    console.info('Answer: ', answerData)
 
 })
+
