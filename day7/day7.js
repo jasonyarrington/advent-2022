@@ -134,7 +134,6 @@ exports.run = (filename) => {
 
     let smallest = this.smallestDelete(70000000, 30000000, dataSorted, dirsFlattened)
 
-
     return {
         dataSorted: dataSorted,
         dirsFlattened: dirsFlattened,
