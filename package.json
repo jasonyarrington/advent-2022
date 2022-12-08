@@ -7,6 +7,7 @@
   "author": "Jason Yarrington <jason@fastforward.sh>",
   "license": "CC",
   "dependencies": {
+    "object-path": "^0.11.8",
     "winston": "^3.8.2"
   },
   "scripts": {
