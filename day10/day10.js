@@ -4,13 +4,26 @@ const logger = require('../util/logger')
 
 exports.ClockCircuit = class ClockCircuit {
 
-    register = 1
     cycles = []
     currentCycle = 0
     commandStack = []
 
+    litChar = '#'
+    darkChar = '.'
+
     constructor() {
 
+    }
+
+    // Grid of screen
+    screen = []
+
+    isLit = (x, register) => {
+        return Math.abs(register - x) <= 1
+    }
+    drawPixel = (x, y, register) => {
+        this.screen[y] = this.screen[y] || []
+        this.screen[y][x] = this.isLit(x, register) ? this.litChar : this.darkChar
     }
 
     processCommands = (commandStr) => {
@@ -39,9 +52,30 @@ exports.ClockCircuit = class ClockCircuit {
 
     processStack = () => {
         let register = 1
+        let screenMaxColumn = 39
+        let screenMaxRow = 6
+        let screenRow = 0
+        let screenColumn = 0
+
         for (let i = 0; i < this.commandStack.length; i++) {
+
+            // Draw
+            this.drawPixel(screenColumn, screenRow, register)
+
+            // Move cursor
+            if (screenColumn == screenMaxColumn) {
+                screenRow++
+                screenColumn = 0
+            } else {
+                screenColumn++
+            }
+
+            // Record cycle
             this.cycles.push(register)
+
+            // push cycle
             register += this.commandStack[i]
+            
         }
     }
 
@@ -59,6 +93,17 @@ exports.ClockCircuit = class ClockCircuit {
         return strength
     }
 
+    outputScreen = () => {
+        let output = ''
+        for (let y = 0; y < this.screen.length; y++) {
+            for (let x = 0; x < this.screen[y].length; x++) {
+                output += this.screen[y][x]
+            }
+            output += "\n"
+        }
+        console.log(output)
+    }
+
 }
 
 exports.run = (filename) => {
@@ -69,7 +114,7 @@ exports.run = (filename) => {
 
     clock.processCommands(data)
     clock.processStack()
-
+    clock.outputScreen()
     return {
         clock: clock
     }
