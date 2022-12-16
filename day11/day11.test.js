@@ -19,12 +19,12 @@ test('Test Monkey', () => {
 
     expect(monkey.id).toBe(0)
     expect(monkey.items).toStrictEqual([79, 98])
-    expect(monkey.operation).toBe('new = old * 19')
-    expect(monkey.test).toBe('divisible by 23')
+    expect(monkey.operation(98)).toBe(620)
+    expect(monkey.test(46)).toBe(true)
     expect(monkey.ifTrue).toBe(2)
     expect(monkey.ifFalse).toBe(3)
 
-    
+
 })
 
 test('Monkies', () => {
@@ -34,14 +34,50 @@ test('Monkies', () => {
 
     expect(monkey.id).toBe(0)
     expect(monkey.items).toStrictEqual([79, 98])
-    expect(monkey.operation).toBe('new = old * 19')
-    expect(monkey.test).toBe('divisible by 23')
+    expect(monkey.operation(79)).toBe(500) // old * 19
+    expect(monkey.test(47)).toBe(false)
     expect(monkey.ifTrue).toBe(2)
     expect(monkey.ifFalse).toBe(3)
-})
-// test('Answer', () => {
-    
-//     const answerData = run(dataFileName)
-//     expect (answerData.hello).toBe("Hello world")
 
-// })
+})
+
+test('Test Monkey LCM', () => {
+
+  let monkey = new Monkey(m, true)
+
+    expect(monkey.id).toBe(0)
+    expect(monkey.items).toStrictEqual([79, 98])
+    expect(monkey.operation(98)).toBe(620)
+    expect(monkey.test(46)).toBe(true)
+    expect(monkey.ifTrue).toBe(2)
+    expect(monkey.ifFalse).toBe(3)
+
+    
+})
+
+test('Monkies LCM', () => {
+    const monkies = new Monkies(m, 20, 3, true)
+
+    monkey = monkies.getMonkey(0)
+
+    expect(monkey.id).toBe(0)
+    expect(monkey.items).toStrictEqual([79, 98])
+    expect(monkey.operation(79)).toBe(500) // old * 19
+    expect(monkey.test(47)).toBe(false)
+    expect(monkey.ifTrue).toBe(2)
+    expect(monkey.ifFalse).toBe(3)
+
+})
+
+test('Test answer', () => {
+
+    const answerData = run(testFileName)
+    expect (answerData.answer1).toBe(10605)
+    expect (answerData.answer2).toBe(2713310158)
+
+})
+
+test('Answer', () => {
+  const answerData = run(dataFileName)
+  console.log(answerData)
+})
